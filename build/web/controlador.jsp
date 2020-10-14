@@ -33,4 +33,9 @@
             response.sendRedirect("index.jsp");
         }
     }
+    
+    // Paso por registro
+    if (request.getParameter("signin") != null) {
+        response.sendRedirect("registro.jsp");
+    }
 %>
