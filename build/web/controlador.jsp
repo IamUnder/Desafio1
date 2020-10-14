@@ -38,4 +38,16 @@
     if (request.getParameter("signin") != null) {
         response.sendRedirect("registro.jsp");
     }
+    
+    //  Registro de usuario
+    if (request.getParameter("mail") != null) {
+        String mail = request.getParameter("email");
+        String pass = request.getParameter("pass");
+        String nombre = request.getParameter("nombre");
+        String sexo = request.getParameter("sexo");
+        
+        ConexionEstatica.nueva();
+        ConexionEstatica.Insertar_Dato(mail, pass, nombre, sexo);
+        response.sendRedirect("index.jsp");
+    }
 %>
