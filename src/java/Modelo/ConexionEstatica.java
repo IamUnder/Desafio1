@@ -118,9 +118,10 @@ public class ConexionEstatica {
 //    }
 
     //----------------------------------------------------------
-    public static void Insertar_Dato(String mail, String user, String pass) throws SQLException {
-        String Sentencia = "INSERT INTO personas VALUES ('" + mail + "'," + "'" + user + "','" + pass + "',0)";
-        ConexionEstatica.Sentencia_SQL.executeUpdate(Sentencia);
+    public static void Insertar_Dato(String mail, String pass, String nombre, String sexo) throws SQLException {
+        String sentencia = "INSERT INTO `usuarios`(`mail`, `pass`, `nombre`,`sexo`, `rol`, `activo`)"
+                + " VALUES ('" + mail + "','" + pass + "','" + nombre + "','" + sexo + "',0,0)";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
     }
 
     //----------------------------------------------------------
