@@ -141,6 +141,31 @@ public class ConexionEstatica {
     }
     
     //----------------------------------------------------------
+    public static Usuarios existeUsuario(String usuario) {
+        Usuarios existe = null;
+        try {
+            String sentencia = "SELECT * FROM usuarios WHERE mail =? ";
+            //Preparamos la sentencia para evitar la inyección.
+            PreparedStatement sentenciaPreparada = ConexionEstatica.Conex.prepareStatement(sentencia);
+            sentenciaPreparada.setString(1, usuario);
+            ConexionEstatica.Conj_Registros = sentenciaPreparada.executeQuery();
+            
+            //http://www.mclibre.org/consultar/php/lecciones/php-db-inyeccion-sql.html
+            //Código para inyectar -->   ' or '1'='1
+            //String sentencia = "SELECT * FROM personas WHERE Nombre ='"+ usuario +"' ";
+            //ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
+
+            if (ConexionEstatica.Conj_Registros.next())//Si devuelve true es que existe.
+            {
+                existe = new Usuarios(Conj_Registros.getString("mail"), Conj_Registros.getString("pass"), Conj_Registros.getString("pass"), Conj_Registros.getString("sexo"));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en el acceso a la BD.");
+        }
+        return existe;//Si devolvemos null el usuario no existe.
+    }
+    
+    //----------------------------------------------------------
 //    public static Persona recuperarUsuario(String mail,String user) {
 //        Persona existe = null;
 //        try {

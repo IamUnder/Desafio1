@@ -42,6 +42,10 @@ public class Usuarios {
     public int getActivo() {
         return activo;
     }
+
+    public String getPass() {
+        return pass;
+    }
     
     
     
