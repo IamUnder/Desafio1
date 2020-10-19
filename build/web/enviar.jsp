@@ -39,7 +39,7 @@
                 out.println("Datos incorrectos");
             }
             
-            out.println("<br/> <a href='../index.jsp'><button>Volver a Inicio</button></a>");
+            out.println("<br/> <a href='index.jsp'><button>Volver a Inicio</button></a>");
             
 
         %>
