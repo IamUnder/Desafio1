@@ -50,4 +50,9 @@
         ConexionEstatica.Insertar_Dato(mail, pass, nombre, sexo);
         response.sendRedirect("index.jsp");
     }
+    
+
+    if (request.getParameter("loss") != null) {
+        response.sendRedirect("pass.jsp");
+    }
 %>
