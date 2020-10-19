@@ -4,6 +4,7 @@
     Author     : IamUnder
 --%>
 
+<%@page import="Auxiliar.ReCaptcha"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="Auxiliar.Bitacora"%>
@@ -17,6 +18,19 @@
     if (request.getParameter("login") != null) {
         String mail = request.getParameter("email");
         String pass = request.getParameter("pass");
+        session.setAttribute("email", mail);
+        
+        // Varible de el Capcha
+        boolean valid = true;
+        
+        if (request.getParameter("captcha") != null) {
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            System.out.println(gRecaptchaResponse);
+            
+            valid = ReCaptcha.verificar(gRecaptchaResponse);
+        }
+        
+        
         
         ConexionEstatica.nueva();
         Usuarios u = ConexionEstatica.existeUsuario(mail, pass);
