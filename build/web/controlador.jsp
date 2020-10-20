@@ -23,7 +23,7 @@
         // Varible de el Capcha
         boolean valid = true;
         
-        if (request.getParameter("captcha") != null) {
+        if (session.getAttribute("true") != null) {
             String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
             System.out.println(gRecaptchaResponse);
             
@@ -34,7 +34,8 @@
         
         ConexionEstatica.nueva();
         Usuarios u = ConexionEstatica.existeUsuario(mail, pass);
-        if (u != null) {
+        if (u != null && valid) {
+            session.removeAttribute("true");
             session.setAttribute("user", u);
             
             if (u.getRol() == 0) {

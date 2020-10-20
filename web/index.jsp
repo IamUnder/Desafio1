@@ -22,8 +22,9 @@
         
         <%
             int n = ((int)(Math.random()*10))+1;
-            if (n < 2) {
-                out.println("<div id='captcha' class='g-recaptcha' data-sitekey='6LdF9NgZAAAAANJwYPfjvh_vZzTrABKDBpXQcfBx'></div>");
+            if (n < 5 || session.getAttribute("true") != null) {
+                session.setAttribute("true", "true");
+                out.println("<div name='captcha' class='g-recaptcha' data-sitekey='6LdF9NgZAAAAANJwYPfjvh_vZzTrABKDBpXQcfBx'></div>");
             }
         
         %>
