@@ -11,14 +11,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Finder</title>
         <link rel="stylesheet" href="cabecera.css">
+        <link rel="stylesheet" href="js/js.css">
         <script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
-    <body>
+    <body onload="validar()">
         
-        <form action="controlador.jsp" class="form-box animated fadeInUp">
+        <form action="controlador.jsp" class="form-box animated fadeInUp" novalidate>
         <h1 class="form-title">LogIn</h1>
-        <input type="text" placeholder="Email" name="email" autofocus>
-        <input type="password" placeholder="Password" name="pass">
+        <input type="text" placeholder="Email" name="email" id="email" autofocus pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+        <small id="emailError" class="form-text error" aria-live="polite"></small>
+        <input type="password" placeholder="Password" name="pass" id="pass"  pattern="\d{4}" required>
+        <small id="passError" class="form-text error" aria-live="polite"></small>
         
         <%
             int n = ((int)(Math.random()*10))+1;
@@ -39,5 +42,6 @@
             SignIn
         </button>
     </form>
+    <script src="js/valIndex.js"></script>
     </body>
 </html>
