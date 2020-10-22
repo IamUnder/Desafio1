@@ -46,6 +46,20 @@ public class Usuarios {
     public String getPass() {
         return pass;
     }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+    
+    
     
     
     

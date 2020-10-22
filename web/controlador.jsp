@@ -42,7 +42,10 @@
                 //  Es un usuario normal
                 response.sendRedirect("Vistas/normal.jsp");
             }else{
-                response.sendRedirect("Vistas/admin.jsp");
+                //  Es un admin
+                LinkedList usuarios = ConexionEstatica.recuperarUsers();
+                session.setAttribute("users", usuarios);
+                response.sendRedirect("Vistas/admin.jsp?valor=0");
             }
         }else{
             response.sendRedirect("index.jsp");

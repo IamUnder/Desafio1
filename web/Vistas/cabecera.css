@@ -1,0 +1,35 @@
+nav ul li {
+    display: inline-block;
+}
+
+h1{
+    text-align: center;
+}
+
+nav{
+    text-align: center;
+    background-color: #F9A6C4;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
+section{
+    background-color: white;
+    border-radius: 15px;
+}
+
+form {
+    border: 1px solid black;
+    padding: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%; 
+}
