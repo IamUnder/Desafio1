@@ -9,6 +9,7 @@ h1{
 nav{
     text-align: center;
     background-color: #F9A6C4;
+    border-radius: 15px;
 }
 
 nav ul li a {

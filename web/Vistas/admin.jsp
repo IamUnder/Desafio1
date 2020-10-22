@@ -18,7 +18,7 @@
     <body>
         <header>
             <nav>
-                <h1>Finder</h1>
+                <img src="../img/logo.png" alt="logo finder" class="logo">
                 <ul>
                     <li><a href="admin.jsp?valor=0">Ver usuarios</a></li>
                     <li><a href="admin.jsp?valor=1">Ver administradores</a></li>
@@ -42,7 +42,7 @@
                           %>
                             
                             <form name="for" action="../controlador.jsp" method="POST">
-                                <input type="text" name ="mail" value='<%= uaux.getMail() %>' readonly>
+                                <input type="text" name ="email" value='<%= uaux.getMail() %>' readonly>
                                 <input type="text" name ="nombre" value='<%= uaux.getNombre() %>' readonly>
                                 <input type="text" name ="sexo" value='<%= uaux.getSexo() %>' readonly>
                                 <input type="text" name ="rol" value='<%= uaux.getRol()%>' readonly>

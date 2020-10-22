@@ -24,6 +24,11 @@
     width: 100%;
 }
 
+.logo{
+    width: 30%;
+    height: auto;
+}
+
 /* Las siguientes clases solo se tienen en cuenta si el ancho de pantalla es
  * como minimo 600px
  */
