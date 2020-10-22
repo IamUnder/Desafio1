@@ -73,4 +73,67 @@
     if (request.getParameter("loss") != null) {
         response.sendRedirect("pass.jsp");
     }
+    
+    if (request.getParameter("rolCRUD") != null) {
+        String email = request.getParameter("email");
+        int rol = Integer.parseInt(request.getParameter("rol"));
+        
+        ConexionEstatica.nueva();
+        if (rol == 0) {
+            ConexionEstatica.cambiarRol(email,1);
+            LinkedList usuarios = ConexionEstatica.recuperarUsers();
+            session.setAttribute("users", usuarios);
+            response.sendRedirect("Vistas/admin.jsp?valor=1");
+        } else {
+            ConexionEstatica.cambiarRol(email,0);
+            LinkedList usuarios = ConexionEstatica.recuperarUsers();
+            session.setAttribute("users", usuarios);
+            response.sendRedirect("Vistas/admin.jsp?valor=0");
+        }
+    }
+    
+    if (request.getParameter("actCRUD") != null) {
+        String email = request.getParameter("email");
+        int rol = Integer.parseInt(request.getParameter("rol"));
+        int activo = Integer.parseInt(request.getParameter("activo"));
+
+        ConexionEstatica.nueva();
+        if (activo == 0) {
+            ConexionEstatica.cambiarEstado(email,1);
+            LinkedList usuarios = ConexionEstatica.recuperarUsers();
+            session.setAttribute("users", usuarios);
+            
+        } else {
+            ConexionEstatica.cambiarEstado(email,0);
+            LinkedList usuarios = ConexionEstatica.recuperarUsers();
+            session.setAttribute("users", usuarios);
+            
+        }
+        
+        if (rol == 0) {
+           response.sendRedirect("Vistas/admin.jsp?valor=0");     
+        }else{
+            response.sendRedirect("Vistas/admin.jsp?valor=1");
+        }
+    }
+    
+    
+    if (request.getParameter("supCRUD") != null) {
+        String email = request.getParameter("email");
+        int rol = Integer.parseInt(request.getParameter("rol"));
+
+        ConexionEstatica.nueva();
+        
+        ConexionEstatica.borrarUser(email);
+        LinkedList usuarios = ConexionEstatica.recuperarUsers();
+        session.setAttribute("users", usuarios);
+        
+        if (rol == 0) {
+           response.sendRedirect("Vistas/admin.jsp?valor=0");     
+        }else{
+            response.sendRedirect("Vistas/admin.jsp?valor=1");
+        }
+    }
+    
+
 %>

@@ -15,10 +15,9 @@ public class ConexionEstatica {
     //Atributo que nos permite ejecutar una sentencia SQL
     private static java.sql.ResultSet Conj_Registros;
 
-
-    public static void nueva(){
+    public static void nueva() {
         try {
-         //Cargar el driver/controlador
+            //Cargar el driver/controlador
             String controlador = "com.mysql.jdbc.Driver";
             //String controlador = "oracle.jdbc.driver.OracleDriver";
             //String controlador = "sun.jdbc.odbc.JdbcOdbcDriver"; 
@@ -40,7 +39,7 @@ public class ConexionEstatica {
             System.err.println("Exception: " + e.getMessage());
         }
     }
-    
+
     public static void cerrarBD() {
         try {
             // resultado.close();
@@ -51,8 +50,6 @@ public class ConexionEstatica {
         }
     }
 
-    
-    
 //    public static Persona existeUsuario(String usuario) {
 //        Persona existe = null;
 //        try {
@@ -76,12 +73,10 @@ public class ConexionEstatica {
 //        }
 //        return existe;//Si devolvemos null el usuario no existe.
 //    }
-
-  
-    
     /**
      * Usando una LinkedList.
-     * @return 
+     *
+     * @return
      */
 //    public static LinkedList obtenerPersonas() {
 //        LinkedList personasBD = new LinkedList<>();
@@ -97,27 +92,25 @@ public class ConexionEstatica {
 //        }
 //        return personasBD;
 //    }
-    
-    public static LinkedList recuperarUsers(){
+    public static LinkedList recuperarUsers() {
         LinkedList usersBD = new LinkedList<>();
         Usuarios u = null;
         try {
             String sentencia = "SELECT * FROM usuarios";
             ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
             while (Conj_Registros.next()) {
-                u = new Usuarios(Conj_Registros.getString("mail"),Conj_Registros.getString("pass"),Conj_Registros.getString("nombre"),Conj_Registros.getString("sexo"),Conj_Registros.getInt("rol"),Conj_Registros.getInt("activo"));
+                u = new Usuarios(Conj_Registros.getString("mail"), Conj_Registros.getString("pass"), Conj_Registros.getString("nombre"), Conj_Registros.getString("sexo"), Conj_Registros.getInt("rol"), Conj_Registros.getInt("activo"));
                 usersBD.add(u);
             }
-        } catch (SQLException ex){        
+        } catch (SQLException ex) {
         }
         return usersBD;
     }
-    
-    
-    
+
     /**
      * Usando una tabla Hash.
-     * @return 
+     *
+     * @return
      */
 //    public static HashMap<String, Persona> obtenerPersonas2() {
 //        HashMap <String, Persona> personos = new HashMap<String, Persona>();
@@ -133,7 +126,6 @@ public class ConexionEstatica {
 //        }
 //        return personos;
 //    }
-
     //----------------------------------------------------------
     public static void Insertar_Dato(String mail, String pass, String nombre, String sexo) throws SQLException {
         String sentencia = "INSERT INTO `usuarios`(`mail`, `pass`, `nombre`,`sexo`, `rol`, `activo`)"
@@ -142,7 +134,7 @@ public class ConexionEstatica {
     }
 
     //----------------------------------------------------------
-    public static Usuarios existeUsuario(String mail,String pass) {
+    public static Usuarios existeUsuario(String mail, String pass) {
         Usuarios existe = null;
         try {
             String sentencia = "SELECT * FROM usuarios WHERE mail = '" + mail + "' and pass = '" + pass + "'";
@@ -156,7 +148,7 @@ public class ConexionEstatica {
         }
         return existe;//Si devolvemos null el usuario no existe.
     }
-    
+
     //----------------------------------------------------------
     public static Usuarios existeUsuario(String usuario) {
         Usuarios existe = null;
@@ -166,12 +158,11 @@ public class ConexionEstatica {
             PreparedStatement sentenciaPreparada = ConexionEstatica.Conex.prepareStatement(sentencia);
             sentenciaPreparada.setString(1, usuario);
             ConexionEstatica.Conj_Registros = sentenciaPreparada.executeQuery();
-            
+
             //http://www.mclibre.org/consultar/php/lecciones/php-db-inyeccion-sql.html
             //Código para inyectar -->   ' or '1'='1
             //String sentencia = "SELECT * FROM personas WHERE Nombre ='"+ usuario +"' ";
             //ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
-
             if (ConexionEstatica.Conj_Registros.next())//Si devuelve true es que existe.
             {
                 existe = new Usuarios(Conj_Registros.getString("mail"), Conj_Registros.getString("pass"), Conj_Registros.getString("pass"), Conj_Registros.getString("sexo"));
@@ -181,7 +172,7 @@ public class ConexionEstatica {
         }
         return existe;//Si devolvemos null el usuario no existe.
     }
-    
+
     //----------------------------------------------------------
 //    public static Persona recuperarUsuario(String mail,String user) {
 //        Persona existe = null;
@@ -197,11 +188,28 @@ public class ConexionEstatica {
 //        }
 //        return existe;//Si devolvemos null el usuario no existe.
 //    }
-
     //----------------------------------------------------------
     public void Borrar_Dato(String tabla, String DNI) throws SQLException {
         String Sentencia = "DELETE FROM " + tabla + " WHERE DNI = '" + DNI + "'";
         ConexionEstatica.Sentencia_SQL.executeUpdate(Sentencia);
     }
 
+    public static void cambiarRol(String mail, int n) throws SQLException {
+        System.out.println(mail);
+        System.out.println(n);
+        String sentencia = "UPDATE usuarios SET rol='" + n + "' where mail='" + mail + "'";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
+
+    public static void cambiarEstado(String mail, int n) throws SQLException {
+        System.out.println(mail);
+        System.out.println(n);
+        String sentencia = "UPDATE usuarios SET activo='" + n + "' where mail='" + mail + "'";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
+
+    public static void borrarUser(String mail) throws SQLException {
+        String sentencia = "Delete from usuarios where mail='" + mail + "'";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
 }

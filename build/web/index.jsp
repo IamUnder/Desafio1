@@ -35,13 +35,18 @@
         <button type="submit" name="login">
             Login
         </button>
-        <button type="submit" name="loss">
+        <button  name="loss">
+        <a href="pass.jsp">
             Forgot Pass
+        </a>
         </button>
-        <button type="submit" name="signin">
-            SignIn
+        <button  name="signin">
+            <a href="registro.jsp">
+                SignIn
+            </a>
         </button>
     </form>
+    
     <script src="js/valIndex.js"></script>
     </body>
 </html>
