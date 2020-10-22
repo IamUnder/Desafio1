@@ -98,6 +98,23 @@ public class ConexionEstatica {
 //        return personasBD;
 //    }
     
+    public static LinkedList recuperarUsers(){
+        LinkedList usersBD = new LinkedList<>();
+        Usuarios u = null;
+        try {
+            String sentencia = "SELECT * FROM usuarios";
+            ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
+            while (Conj_Registros.next()) {
+                u = new Usuarios(Conj_Registros.getString("mail"),Conj_Registros.getString("pass"),Conj_Registros.getString("nombre"),Conj_Registros.getString("sexo"),Conj_Registros.getInt("rol"),Conj_Registros.getInt("activo"));
+                usersBD.add(u);
+            }
+        } catch (SQLException ex){        
+        }
+        return usersBD;
+    }
+    
+    
+    
     /**
      * Usando una tabla Hash.
      * @return 
