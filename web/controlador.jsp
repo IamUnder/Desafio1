@@ -4,6 +4,7 @@
     Author     : IamUnder
 --%>
 
+<%@page import="Modelo.Pref"%>
 <%@page import="Auxiliar.ReCaptcha"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.HashMap"%>
@@ -40,7 +41,18 @@
             
             if (u.getRol() == 0) {
                 //  Es un usuario normal
-                response.sendRedirect("Vistas/normal.jsp");
+                if (u.getActivo()== 1) { 
+                    Pref p = ConexionEstatica.pref(u.getMail());
+                    if (p != null) {
+                        session.setAttribute("pref", p);
+                        response.sendRedirect("Vistas/normal.jsp");    
+                    }else{
+                        response.sendRedirect("Vistas/pref.jsp");
+                    }
+                } else {
+                    response.sendRedirect("Vistas/error.jsp");   
+                };
+                
             }else{
                 //  Es un admin
                 LinkedList usuarios = ConexionEstatica.recuperarUsers();
