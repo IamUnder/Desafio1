@@ -18,9 +18,11 @@
             <nav>
                 <img src="../img/logo.png" alt="logo finder" class="logo">
                 <ul>
-                    <li><a href="admin.jsp?valor=0">Ver usuarios</a></li>
-                    <li><a href="admin.jsp?valor=1">Ver administradores</a></li>
-                    <li><a href="normal.jsp">Usuario Normal</a></li>
+                    <form>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    </form>
                 </ul>
                 <ul>
                     <li>Usuarios conectados: </li>
