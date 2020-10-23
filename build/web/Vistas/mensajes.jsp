@@ -4,6 +4,8 @@
     Author     : IamUnder
 --%>
 
+<%@page import="java.util.LinkedList"%>
+<%@page import="Modelo.Mensaje"%>
 <%@page import="Modelo.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,9 +34,20 @@
         <main class="row alto">
             <div class="col-l-1 col-m-0 alto"></div>
             <section class="col-l-8 col-m-10 alto">
+                <h1>Mensajes Recibidos: </h1>
                 <%
                     Usuarios u = (Usuarios) session.getAttribute("user");
-                    out.println("<h1> Bienvenido " + u.getNombre() + "</h1>");
+                    LinkedList<Mensaje> msgs = (LinkedList) session.getAttribute("msgs");
+                    for (Mensaje maux : msgs) {
+                %>
+                <form name="for" action="../controlador.jsp" method="POST" class="crud">
+                    <input type="text" name ="email" value='<%= maux.getUser1()%>' readonly>
+                    <input type="text" name ="txt" value='<%= maux.getTexto()%>' disabled>
+                    <input type="submit" name="read" value="Leer">
+                </form>
+
+                <%
+                    }
                 %>
             </section>
             <div class="col-l-1 col-m-0 alto"></div>

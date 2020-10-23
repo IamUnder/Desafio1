@@ -107,6 +107,21 @@ public class ConexionEstatica {
         return usersBD;
     }
 
+    public static LinkedList recuperarPrefs() {
+        LinkedList usersBD = new LinkedList<>();
+        Pref p = null;
+        try {
+            String sentencia = "SELECT * FROM pref";
+            ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
+            while (Conj_Registros.next()) {
+                p = new Pref(Conj_Registros.getString("mail"), Conj_Registros.getString("relacion"), Conj_Registros.getInt("deportes"), Conj_Registros.getInt("arte"), Conj_Registros.getInt("politica"), Conj_Registros.getString("hijos"), Conj_Registros.getString("interes"));
+                usersBD.add(p);
+            }
+        } catch (SQLException ex) {
+        }
+        return usersBD;
+    }
+
     /**
      * Usando una tabla Hash.
      *
@@ -208,29 +223,92 @@ public class ConexionEstatica {
         ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
     }
 
+    public static void aceptarPeti(String mail1, String mail2) throws SQLException {
+        String sentencia = "UPDATE amigos SET aceptada='1' where user1='" + mail1 + "' and user2='" + mail2 + "'";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
+
     public static void borrarUser(String mail) throws SQLException {
         String sentencia = "Delete from usuarios where mail='" + mail + "'";
         ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
     }
-    
-    public static Pref pref(String mail){
+
+    public static void eliminarPeti(String mail1, String mail2) throws SQLException {
+        String sentencia = "Delete from amigos where user1='" + mail1 + "' and user2='" + mail2 + "'";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
+
+    public static Pref pref(String mail) {
         Pref res = null;
         try {
             String sentencia = "SELECT * FROM pref WHERE mail = '" + mail + "'";
             ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
             if (ConexionEstatica.Conj_Registros.next())//Si devuelve true es que existe.
             {
-                res = new Pref(mail, Conj_Registros.getString("relacion"), Conj_Registros.getInt("deportes"), Conj_Registros.getInt("arte"), Conj_Registros.getInt("politica"),Conj_Registros.getString("hijos"),Conj_Registros.getString("interes"));
+                res = new Pref(mail, Conj_Registros.getString("relacion"), Conj_Registros.getInt("deportes"), Conj_Registros.getInt("arte"), Conj_Registros.getInt("politica"), Conj_Registros.getString("hijos"), Conj_Registros.getString("interes"));
             }
         } catch (SQLException ex) {
             System.out.println("Error en el acceso a la BD.");
         }
         return res;
     }
+
+    public static LinkedList recuperarPetis(String mail) {
+        LinkedList petis = new LinkedList<>();
+        Petis u;
+        try {
+            String sentencia = "SELECT * FROM amigos where user1='" + mail + "'or user2='" + mail + "'";
+            ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
+            while (Conj_Registros.next()) {
+                u = new Petis(Conj_Registros.getString("user1"), Conj_Registros.getString("user2"), Conj_Registros.getInt("aceptada"));
+                petis.add(u);
+            }
+        } catch (SQLException ex) {
+        }
+        return petis;
+    }
     
+    public static LinkedList recuperarMsg(String mail){
+        LinkedList msgs = new LinkedList<>();
+        Mensaje m;
+        try {
+            String sentencia = "SELECT * FROM msg where user2='" + mail + "'";
+            ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
+            while (Conj_Registros.next()) {
+                m = new Mensaje(Conj_Registros.getString("user1"), Conj_Registros.getString("user2"), Conj_Registros.getString("texto"));
+                msgs.add(m);
+            }
+        } catch (SQLException ex) {
+        }
+        return msgs;
+    }
+
     public static void Insertar_Pref(Pref p) throws SQLException {
         String sentencia = "INSERT INTO `pref`"
-                + " VALUES ('" + p.getMail() + "','" + p.getRelacion() + "','" + p.getDeportes() + "','" + p.getArte()+ "','"+ p.getPolitica() + "','" + p.getHijos()+ "','" + p.getInteres()+ "')"  ;
+                + " VALUES ('" + p.getMail() + "','" + p.getRelacion() + "','" + p.getDeportes() + "','" + p.getArte() + "','" + p.getPolitica() + "','" + p.getHijos() + "','" + p.getInteres() + "')";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
+    
+    public static Mensaje unMail(String user, String txt){
+        Mensaje m = new Mensaje();
+        try {
+            String sentencia = "SELECT * FROM msg where user2='" + user + "' and text='" + txt +"'";
+            ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
+            while (Conj_Registros.next()) {
+                m = new Mensaje(Conj_Registros.getString("user1"), Conj_Registros.getString("user2"), Conj_Registros.getString("texto"));
+            }
+        } catch (SQLException ex) {
+        }
+        return m;
+    }
+
+    public static void peticion(String mail1, String mail2) throws SQLException {
+        String sentencia = "Insert into amigos values ('" + mail1 + "','" + mail2 + "','0')";
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
+    
+    public static void mandarMsg(String para, String de, String txt) throws SQLException{
+        String sentencia = "Insert into msg values ('" + de + "','" + para + "','" + txt + "')";
         ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
     }
 }

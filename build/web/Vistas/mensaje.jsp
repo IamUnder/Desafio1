@@ -4,6 +4,7 @@
     Author     : IamUnder
 --%>
 
+<%@page import="Modelo.Mensaje"%>
 <%@page import="Modelo.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,8 +34,29 @@
             <div class="col-l-1 col-m-0 alto"></div>
             <section class="col-l-8 col-m-10 alto">
                 <%
-                    Usuarios u = (Usuarios) session.getAttribute("user");
-                    out.println("<h1> Bienvenido " + u.getNombre() + "</h1>");
+                    if (session.getAttribute("m") != null) {
+                        Mensaje m = (Mensaje) session.getAttribute("m");
+
+                %>
+                <form name="for" action="../controlador.jsp" method="POST" class="crud">
+                    <p> Para: <input type="text" name ="email" value='<%= m.getUser1()%>' readonly></p>
+                    <p><textarea id="textbox" name="textbox" rows="4" cols="50" value="<%= m.getTexto()%>" readonly=""></textarea></p>
+                    <input type="submit" name="back" value="Volver a mensajes">
+                </form>
+
+                <%
+
+                } else {
+
+                    String mail = (String) session.getAttribute("para");
+                %>
+                <form name="for" action="../controlador.jsp" method="POST" class="crud">
+                    <p> Para: <input type="text" name ="email" value='<% out.println(mail);%>' readonly></p>
+                    <p><textarea id="textbox" name="textbox" rows="4" cols="50" placeholder="Mensaje"></textarea></p>
+                    <input type="submit" name="send2" value="Enviar mensaje">
+                </form>
+                <%
+                    }
                 %>
             </section>
             <div class="col-l-1 col-m-0 alto"></div>
