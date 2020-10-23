@@ -227,4 +227,10 @@ public class ConexionEstatica {
         }
         return res;
     }
+    
+    public static void Insertar_Pref(Pref p) throws SQLException {
+        String sentencia = "INSERT INTO `pref`"
+                + " VALUES ('" + p.getMail() + "','" + p.getRelacion() + "','" + p.getDeportes() + "','" + p.getArte()+ "','"+ p.getPolitica() + "','" + p.getHijos()+ "','" + p.getInteres()+ "')"  ;
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
 }

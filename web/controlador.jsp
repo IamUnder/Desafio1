@@ -82,10 +82,8 @@
     }
     
 
-    if (request.getParameter("loss") != null) {
-        response.sendRedirect("pass.jsp");
-    }
-    
+   
+    //  Cambiar el rol en el crud
     if (request.getParameter("rolCRUD") != null) {
         String email = request.getParameter("email");
         int rol = Integer.parseInt(request.getParameter("rol"));
@@ -104,6 +102,7 @@
         }
     }
     
+    //  Activar o desactivar los usuarios
     if (request.getParameter("actCRUD") != null) {
         String email = request.getParameter("email");
         int rol = Integer.parseInt(request.getParameter("rol"));
@@ -129,7 +128,7 @@
         }
     }
     
-    
+    //  Eliminar usuarios en el crud
     if (request.getParameter("supCRUD") != null) {
         String email = request.getParameter("email");
         int rol = Integer.parseInt(request.getParameter("rol"));
@@ -147,5 +146,22 @@
         }
     }
     
+
+    // Rejistro de preferencias
+    if (request.getParameter("pref") != null) {
+        Usuarios u = (Usuarios) session.getAttribute("user");
+        String relacion = request.getParameter("relacion");
+        int deportes = Integer.parseInt(request.getParameter("deportes"));
+        int arte = Integer.parseInt(request.getParameter("arte"));
+        int politica = Integer.parseInt(request.getParameter("politica"));
+        String hijos = request.getParameter("hijos");
+        String interes = request.getParameter("interes");
+        
+        ConexionEstatica.nueva();
+        Pref aux = new Pref(u.getMail(),relacion,deportes,arte,politica,hijos,interes);
+        ConexionEstatica.Insertar_Pref(aux);
+        response.sendRedirect("Vistas/normal.jsp");
+        
+    }
 
 %>

@@ -29,9 +29,9 @@
             <h2>Interes en:</h2>
             <label for="deportes">Deportes: 
                 <input type="number" name="deportes" id="deportes" min="0" max="100"> </label>
-            <label for="deportes">Arte: 
+            <label for="arte">Arte: 
                 <input type="number" name="arte" id="arte" min="0" max="100"> </label>
-            <label for="deportes">Politica: 
+            <label for="politica">Politica: 
                 <input type="number" name="politica" id="politica" min="0" max="100"> </label>
 
 
@@ -59,7 +59,7 @@
                 <input type="radio" id="ambos" name="interes" value="ambos">
                 Ambos
             </label>
-            <button type="submit" name="login">
+            <button type="submit" name="pref">
                 Enviar
             </button>
         </form>

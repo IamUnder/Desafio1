@@ -27,6 +27,34 @@ public class Pref {
         this.hijos = hijos;
         this.interes = interes;
     }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getRelacion() {
+        return relacion;
+    }
+
+    public int getDeportes() {
+        return deportes;
+    }
+
+    public int getArte() {
+        return arte;
+    }
+
+    public int getPolitica() {
+        return politica;
+    }
+
+    public String getHijos() {
+        return hijos;
+    }
+
+    public String getInteres() {
+        return interes;
+    }
     
     
 }
