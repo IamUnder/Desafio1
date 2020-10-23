@@ -81,3 +81,9 @@ label{
     display: block;
     margin: 3%;
 }
+
+h2{
+    font-weight: 350;
+    color: white;
+    text-transform: uppercase;
+}
