@@ -3,17 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/src/java/Modelo/Pref.java</file>
-            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/pass.jsp</file>
-            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/rejilla.css</file>
             <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/cabecera.css</file>
             <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/pref.jsp</file>
-            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/admin.jsp</file>
             <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/src/java/Modelo/ConexionEstatica.java</file>
-            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/cabecera.css</file>
-            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/src/java/Modelo/Usuarios.java</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/src/java/Modelo/Mensaje.java</file>
             <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/error.jsp</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/src/java/Modelo/Petis.java</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/radar.jsp</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/normal.jsp</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/mensajes.jsp</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/admin.jsp</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/mensaje.jsp</file>
             <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/controlador.jsp</file>
+            <file>file:/C:/Users/IamUnder/Documents/NetBeansProjects/Desafio1/web/Vistas/amigos.jsp</file>
         </group>
     </open-files>
 </project-private>
