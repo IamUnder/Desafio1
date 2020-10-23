@@ -60,18 +60,18 @@ function validar(){
         if (email.validity.valueMissing) {
             emailError.textContent = 'Debe introducir un valor';
         }else if (email.validity.patternMismatch){
-            emailError.textContent = 'Debe introducir un email correcto'
+            emailError.textContent = 'Debe introducir un email correcto';
         }
-        emailError.className = 'error activate'
+        emailError.className = 'error activate';
     }
     
     function mostrarErrorPass(){
         if (pass.validity.valueMissing) {
             passError.textContent = 'Debe introducir un valor';
         }else if (pass.validity.patternMismatch){
-            passError.textContent = 'Debe introducir una contraseña de 4 digitos)'
+            passError.textContent = 'Debe introducir una contraseña de 4 digitos)';
         }
-        emailError.className = 'error activate'
+        emailError.className = 'error activate';
     }
     
     form.addEventListener('submit', function (event){
@@ -83,5 +83,5 @@ function validar(){
             mostrarErrorPass();
             event.preventDefault();
         }
-    })
+    });
 }

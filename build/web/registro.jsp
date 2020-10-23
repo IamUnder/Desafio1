@@ -12,19 +12,29 @@
         <title>Finder Registro</title>
         <link rel="stylesheet" href="cabecera.css">
     </head>
-    <body>
+    <body onload="validar()">
         <form action="controlador.jsp" method="post" class="form-box animated fadeInUp">
             <h1 class="form-title">Registro</h1>
-            <input type="text" placeholder="Mail" name="email">
-            <input type="text" placeholder="Nombre Completo" name="nombre">
-            <input type="password" placeholder="Password" name="pass">
-            <input type="radio" id="hombre" name="sexo" value="hombre">
-            <label for="hombre">Hombre</label>
-            <input type="radio" id="mujer" name="sexo" value="mujer">
-            <label for="mujer">Mujer</label>
+            <input type="text" placeholder="Mail" name="email" required>
+            <input type="text" placeholder="Nombre Completo" name="nombre" required>
+            <input type="password" placeholder="Password" name="pass" required>
+
+            <label for="hombre">Hombre
+                <input type="radio" id="hombre" name="sexo" value="hombre" checked >
+            </label>
+            <label for="mujer">Mujer:
+                <input type="radio" id="mujer" name="sexo" value="mujer">
+            </label>
+
+            <!-- captcha matematico -->
+            <canvas id="captcha"></canvas>
+            <input type="text" id="txtInput"/>
+
             <button type="submit" name="mail">
                 Registrarse
             </button>
         </form>
+
+        <script src="js/valReg.js"></script>
     </body>
 </html>
