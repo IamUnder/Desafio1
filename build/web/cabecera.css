@@ -29,7 +29,7 @@ body {
     font-weight: 500;
 }
 
-.form-box input[type="text"], .form-box input[type="password"], .form-box button {
+.form-box input[type="text"], .form-box input[type="password"], .form-box button, form-box input[type="number"] {
     border: 0;
     background: none;
     display: block;
@@ -44,7 +44,7 @@ body {
     transition: 0.25s;
 }
 
-.form-box input[type="text"]:focus, .form-box input[type="password"]:focus {
+.form-box input[type="text"]:focus, .form-box input[type="password"]:focus, .form-box input[type="number"]:focus {
     width: 280px;
     border-color: #ffffff;
 }
@@ -75,4 +75,15 @@ label {
 a{
     color: white;
     text-decoration: none;
+}
+
+label{
+    display: block;
+    margin: 3%;
+}
+
+h2{
+    font-weight: 350;
+    color: white;
+    text-transform: uppercase;
 }

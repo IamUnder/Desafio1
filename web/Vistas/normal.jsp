@@ -9,9 +9,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Finder</title>
+        <link rel="stylesheet" href="rejilla.css">
+        <link rel="stylesheet" href="cabecera.css">
     </head>
     <body>
-        <h1>Acceso usuario normal</h1>
+         <header>
+            <nav>
+                <img src="../img/logo.png" alt="logo finder" class="logo">
+                <ul>
+                    <li><a href="admin.jsp?valor=0">Ver usuarios</a></li>
+                    <li><a href="admin.jsp?valor=1">Ver administradores</a></li>
+                    <li><a href="normal.jsp">Usuario Normal</a></li>
+                </ul>
+                <ul>
+                    <li>Usuarios conectados: </li>
+                    <li>Amigos conectados: </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="row alto">
+            <div class="col-l-1 col-m-0 alto"></div>
+            <section class="col-l-8 col-m-10 alto">
+                
+            </section>
+            <div class="col-l-1 col-m-0 alto"></div>
+        </main>
     </body>
 </html>

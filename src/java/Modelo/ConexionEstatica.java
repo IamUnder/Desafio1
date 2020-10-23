@@ -212,4 +212,25 @@ public class ConexionEstatica {
         String sentencia = "Delete from usuarios where mail='" + mail + "'";
         ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
     }
+    
+    public static Pref pref(String mail){
+        Pref res = null;
+        try {
+            String sentencia = "SELECT * FROM pref WHERE mail = '" + mail + "'";
+            ConexionEstatica.Conj_Registros = ConexionEstatica.Sentencia_SQL.executeQuery(sentencia);
+            if (ConexionEstatica.Conj_Registros.next())//Si devuelve true es que existe.
+            {
+                res = new Pref(mail, Conj_Registros.getString("relacion"), Conj_Registros.getInt("deportes"), Conj_Registros.getInt("arte"), Conj_Registros.getInt("politica"),Conj_Registros.getString("hijos"),Conj_Registros.getString("interes"));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en el acceso a la BD.");
+        }
+        return res;
+    }
+    
+    public static void Insertar_Pref(Pref p) throws SQLException {
+        String sentencia = "INSERT INTO `pref`"
+                + " VALUES ('" + p.getMail() + "','" + p.getRelacion() + "','" + p.getDeportes() + "','" + p.getArte()+ "','"+ p.getPolitica() + "','" + p.getHijos()+ "','" + p.getInteres()+ "')"  ;
+        ConexionEstatica.Sentencia_SQL.executeUpdate(sentencia);
+    }
 }
